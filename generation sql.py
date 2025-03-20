@@ -1,6 +1,5 @@
-import psycopg2
-import random
-from faker import Faker
+import psycopg2, random
+
 
 # Подключение к базе данных
 conn = psycopg2.connect(
@@ -11,10 +10,14 @@ conn = psycopg2.connect(
     port="1409"
 )
 cur = conn.cursor()
-faker = Faker()
+names = ['Джимми Ортега', 'Джеронимо Стилтон', 'Джеки Чан', 'Иван Мелентьев', 'Кириилл Осипов'
+         'Антоша Гульнев', 'Никита Кузнецов', 'Андрей Латкин', 'Роман Баев', 'Оля Головина', 'Михаил Авдонин',
+         'Глино Мес', 'Самос Вал']
+ranname = random.randint(0, len(names))
 
-for _ in range(10):
-    name = faker.name()
+
+for _ in range(len(names) - 1):
+    name = names[ranname]
     start_year = random.randint(2021, 2024)
     cur.execute("INSERT INTO Students (name, start_year) VALUES (%s, %s) RETURNING s_id", (name, start_year))
 
