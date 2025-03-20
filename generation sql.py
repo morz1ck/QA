@@ -13,11 +13,11 @@ cur = conn.cursor()
 names = ['Джимми Ортега', 'Джеронимо Стилтон', 'Джеки Чан', 'Иван Мелентьев', 'Кириилл Осипов'
          'Антоша Гульнев', 'Никита Кузнецов', 'Андрей Латкин', 'Роман Баев', 'Оля Головина', 'Михаил Авдонин',
          'Глино Мес', 'Самос Вал']
-ranname = random.randint(0, len(names))
+
 
 
 for _ in range(len(names) - 1):
-    name = names[ranname]
+    name = random.choice(names)
     start_year = random.randint(2021, 2024)
     cur.execute("INSERT INTO Students (name, start_year) VALUES (%s, %s) RETURNING s_id", (name, start_year))
 
