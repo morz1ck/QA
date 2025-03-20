@@ -1,5 +1,5 @@
--- Задание 1.
-
+### Задание 1.
+```sql
 CREATE DATABASE university
     WITH
     OWNER = postgres
@@ -10,12 +10,15 @@ CREATE DATABASE university
     TABLESPACE = pg_default
     CONNECTION LIMIT = -1
     IS_TEMPLATE = False;
+```
+### Задание 2.
 
+```sql
 DROP TABLE IF EXISTS Exams CASCADE;
 DROP TABLE IF EXISTS Courses CASCADE;
 DROP TABLE IF EXISTS Students CASCADE;	
 
---Задание 2.
+
 
 CREATE TABLE Students (
     s_id SERIAL PRIMARY KEY,
@@ -35,8 +38,10 @@ CREATE TABLE Exams (
     score INT,
     PRIMARY KEY (s_id, c_no)
 );
+```
 
 -- Задание 3. 
+```sql
 INSERT INTO Students (name, start_year) VALUES 
 ('Иван Иванов', 2021),
 ('Мария Петрова', 2020),
@@ -56,21 +61,24 @@ INSERT INTO Exams (s_id, c_no, score) VALUES
 (2, 1, 78),
 (3, 3, 88), 
 (3, 2, 75);  
-
-
+```
 
 -- Задание 4. Несдавшие.
+```sql
 SELECT s_id, name 
 FROM Students 
 WHERE s_id NOT IN (SELECT s_id FROM Exams);
-
+```
 -- Задание 5. Сдавшие
+```sql
 SELECT s_id, name, COUNT(*) AS exam_count 
 FROM Students 
 JOIN Exams USING (s_id) 
 GROUP BY s_id, name;
+```
 
 --Задание 6. Средний балл по экзамену.
+```sql
 SELECT 
     c.title, 
     ROUND(AVG(e.score), 2) AS avg_score
@@ -78,3 +86,4 @@ FROM Courses c
 JOIN Exams e ON c.c_no = e.c_no
 GROUP BY c.title
 ORDER BY avg_score DESC;
+```
