@@ -52,4 +52,4 @@ conn.commit()
 cur.close()
 conn.close()
 
-print("2 котята и пирожки")
+print("данные готовы")
