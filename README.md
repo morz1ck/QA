@@ -1,3 +1,6 @@
+```
+
+
 DROP TABLE IF EXISTS Exams CASCADE;
 DROP TABLE IF EXISTS Courses CASCADE;
 DROP TABLE IF EXISTS Students CASCADE;	
@@ -36,3 +39,5 @@ SELECT s_id, name, COUNT(*) AS exam_count
 FROM Students 
 JOIN Exams USING (s_id) 
 GROUP BY s_id, name;
+
+'''
