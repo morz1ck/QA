@@ -40,7 +40,7 @@ CREATE TABLE Exams (
 );
 ```
 
--- Задание 3. 
+### Задание 3. 
 ```sql
 INSERT INTO Students (name, start_year) VALUES 
 ('Иван Иванов', 2021),
@@ -63,13 +63,13 @@ INSERT INTO Exams (s_id, c_no, score) VALUES
 (3, 2, 75);  
 ```
 
--- Задание 4. Несдавшие.
+### Задание 4. Несдавшие.
 ```sql
 SELECT s_id, name 
 FROM Students 
 WHERE s_id NOT IN (SELECT s_id FROM Exams);
 ```
--- Задание 5. Сдавшие
+### Задание 5. Сдавшие
 ```sql
 SELECT s_id, name, COUNT(*) AS exam_count 
 FROM Students 
@@ -77,7 +77,7 @@ JOIN Exams USING (s_id)
 GROUP BY s_id, name;
 ```
 
---Задание 6. Средний балл по экзамену.
+### Задание 6. Средний балл по экзамену.
 ```sql
 SELECT 
     c.title, 
